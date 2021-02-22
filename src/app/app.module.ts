@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Page1Component } from './components/page1/page1.component';
 import { Page2Component } from './components/page2/page2.component';
-import { textReducer } from './store/reducers';
+import { questionReducer, textReducer } from './store/reducers';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,10 @@ import { textReducer } from './store/reducers';
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ text: textReducer }),
+    StoreModule.forRoot({ 
+      text: textReducer,
+      question: questionReducer,
+    }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production, 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { addText } from 'src/app/store/actions';
-import { selectText } from 'src/app/store/selectors';
+import { addQuestion, addText, deleteQuestion } from 'src/app/store/actions';
+import { selectQuestion, selectText } from 'src/app/store/selectors';
 
 @Component({
   selector: 'app-page1',
@@ -12,6 +12,7 @@ export class Page1Component implements OnInit {
 
   text$ = this.store.pipe(select(selectText));
   text: string;
+  question: string;
 
   constructor(private store: Store) { }
 
@@ -20,11 +21,21 @@ export class Page1Component implements OnInit {
       .pipe(select(selectText))
       .subscribe((text: string) => {
         console.log(text);
+        this.text = text;
       })
   }
 
   changeText() {
     this.store.dispatch(addText({ text: this.text }));
+  }
+
+  sendQuestion() {
+    this.store.dispatch(addQuestion({ question: this.question }));
+    this.question = '';
+  }
+
+  deleteQuestion() {
+    this.store.dispatch(deleteQuestion());
   }
 
 }

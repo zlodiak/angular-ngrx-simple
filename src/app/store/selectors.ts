@@ -7,3 +7,8 @@ export const selectText = createSelector(
   selectState,
   (state: StateType) => state.text
 )
+
+export const selectQuestion = createSelector(
+  selectState,
+  (state: StateType) => state.question
+)

@@ -6,3 +6,9 @@
 
 value: {{ text }}
 
+
+<hr>
+enter question : <input type="text" [(ngModel)]="question">
+<button (click)="sendQuestion()">send question</button>
+<button (click)="deleteQuestion()">delete question</button>
+

@@ -1,9 +1,23 @@
 import { createReducer, on, Action } from '@ngrx/store';
-import { addText } from './actions';
-
-export const initialState: string = 'empty';
+import { addQuestion, addText, deleteQuestion } from './actions';
 
 export const textReducer = createReducer(
-  initialState,
+  '',
   on(addText, (state, { text }) => text)
+);
+
+export const questionReducer = createReducer(
+  { question: '' },
+  on(addQuestion, (state, { question }) => {
+    return {
+      ...state,
+      question: state.question + question,
+    }
+  }),
+  on(deleteQuestion, (state) => {
+    return {
+      ...state,
+      question: '',
+    }
+  })
 );
